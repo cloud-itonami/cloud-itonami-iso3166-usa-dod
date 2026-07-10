@@ -1,0 +1,3 @@
+;; Real-world organization location / contact.
+;; :head-role is institutional title only — no personal names.
+{:contact-page "https://www.wikidata.org/wiki/Q11209", :ooyake-id "gov.usa.dod", :sourced-from "com-etzhayyim-ooyake gov-units (verbatim where present)", :head-role-note "institutional office title only; personal names of current office-holders are intentionally NOT stored", :official-url "https://war.gov/", :head-role "Secretary of Defense", :hq {:line-en "The Pentagon", :country "usa", :kind "headquarters", :provenance "https://www.wikidata.org/wiki/Q11209", :last-verified "2026-06-03", :sourcing "authoritative"}, :wikidata "Q11209", :name-en "United States Department of Defense"}
