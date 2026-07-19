@@ -1,12 +1,12 @@
 ;; Real-world organization location / contact.
 ;; :head-role is institutional title only — no personal names.
 {:ooyake-id "gov.usa.dod"
-  :official-url "https://war.gov/"
+  :official-url "https://www.war.gov/"
   :name-en "United States Department of Defense"
   :wikidata "Q11209"
   :head-role "Secretary of Defense"
   :head-role-note "institutional office title only; personal names of current office-holders are intentionally NOT stored"
-  :contact-page "https://www.wikidata.org/wiki/Q11209"
-  :sourced-from "com-etzhayyim-ooyake gov-units (verbatim where present)"
-  :hq {:line-en "The Pentagon" :country "usa" :kind "headquarters" :provenance "https://www.wikidata.org/wiki/Q11209" :last-verified "2026-06-03" :sourcing "authoritative"}
+  :contact-page "https://www.war.gov/Contact/"
+  :sourced-from "official public contact page"
+  :hq {:line-en "1400 Defense Pentagon, Washington, DC 20301" :line-local "1400 Defense Pentagon, Washington, DC 20301" :postal-code "20301" :kind "headquarters" :provenance "https://www.war.gov/Contact/Mailing-Addresses/" :last-verified "2026-07-19" :sourcing "official-site-public" :country "usa" :note "public-facing site rebranded to war.gov (U.S. Dept of War) under EO 2025-09-05 secondary-title authorization; legal renaming from Department of Defense via NDAA FY2027 not yet finalized as of last-verified date; head-role kept as current legal title. No single canonical HQ phone number could be verified (multiple conflicting public-affairs/operator numbers found) — phone intentionally omitted rather than guessed."}
 }
