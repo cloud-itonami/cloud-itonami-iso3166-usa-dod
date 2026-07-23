@@ -9,7 +9,7 @@ Maintainers may merge changes that preserve these invariants:
 
 - the advisor cannot directly submit a portal registration/filing or
   commit a public record.
-- the Market-Entry Compliance Governor remains independent of the advisor.
+- the DoD Compliance Governor remains independent of the advisor.
 - a fabricated or stale regulatory-requirement claim cannot be overridden
   by human approval alone.
 - every commit, hold and approval path is auditable.

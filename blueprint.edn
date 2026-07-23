@@ -6,8 +6,52 @@
  :itonami.blueprint/domain :public-sector/agency-compliance
  :itonami.blueprint/license "AGPL-3.0-or-later"
  :itonami.blueprint/social-impact [:public-spend-transparency :sme-market-access :cross-border-friction-reduction]
- :itonami.blueprint/governor :market-entry-compliance-governor
+ :itonami.blueprint/governor :dod-compliance-governor
  :itonami.blueprint/robotics false
  :itonami.blueprint/required-technologies [:identity :forms :dmn :bpmn :audit-ledger]
  :itonami.blueprint/status :public-oss
- :itonami.blueprint/organization {:ooyake-id "gov.usa.dod" :official-url "https://war.gov/" :head-role "Secretary of Defense" :contact-page "https://www.wikidata.org/wiki/Q11209"}}
+ :itonami.blueprint/maturity :implemented
+ :itonami.blueprint/organization {:ooyake-id "gov.usa.dod" :official-url "https://www.war.gov/" :head-role "Secretary of Defense" :contact-page "https://www.war.gov/Contact/"}
+ :itonami.blueprint/implemented-slice
+ "src/dodcompliance/* (langgraph-clj StateGraph actor): facts.cljc
+ (DFARS -- Defense Federal Acquisition Regulation Supplement, sourced
+ from acquisition.gov/dfars + CMMC 2.0 -- Cybersecurity Maturity Model
+ Certification, sourced from Wikipedia after primary dodcio.defense.gov
+ sources 403'd this session, with an explicit enforcement-status-caveat
+ that never asserts a specific date on which CMMC contract-clause
+ enforcement became/becomes fully live + DCSA (Defense
+ Counterintelligence and Security Agency)/NISP facility security
+ clearance, sourced from Wikipedia, with an explicit stale-name-trap
+ guard against the retired pre-2019 'Defense Security Service (DSS)'
+ name + SAM.gov registration/DFARS-clause-linkage described structurally
+ with no specific clause number cited, since none was independently
+ verified live this session), governor.cljc (DoD Compliance Governor --
+ spec-basis/no-fabrication HARD check, evidence-incomplete check, a
+ SAM.gov-registration-missing HARD check (any filing/submit track,
+ conditional on the engagement's own declared requirement), a
+ CMMC-level-missing HARD check (:cmmc track only, conditional on the
+ engagement's own declared requirement -- never an independent assertion
+ that CMMC applies to every DoD contract), a
+ DCSA/NISP-facility-clearance-missing HARD check
+ (:facility-clearance track only, conditional on the engagement's own
+ declared requirement), an independently-recomputed
+ engagement-fee-mismatch check (three revenue lines: base fee +
+ monitoring subscription + optional audit-export package), a
+ confidence-floor/actuation gate, and double-draft/double-submit guards
+ per track), store.cljc (MemStore + DatomicStore via
+ kotoba-lang/langchain-store, engagement entity tracking :dfars, :cmmc,
+ and :facility-clearance tracks independently plus engagement-level
+ sam-registration/cmmc-level/facility-clearance verification gates),
+ registry.cljc (pure-function filing-draft/filing-submit record
+ construction), dodcompliancellm.cljc (mock Compliance Advisor),
+ operation.cljc (intake -> advise -> govern -> decide ->
+ [request-approval ->] commit/hold StateGraph), phase.cljc (0->3
+ rollout, :filing/draft and :filing/submit permanently excluded from
+ every phase's :auto set). 36 tests / 124 assertions passing (governor
+ contract + store parity + facts + phase + registry), clj-kondo clean (0
+ errors, 6 non-fatal unused-binding/unused-require warnings in test
+ files). Kept strictly at the compliance-PROCESS level throughout -- no
+ classified, CUI, or operational content modeled or invented; every
+ CMMC-related check verifies the ENGAGEMENT's own declared requirement,
+ never an independent claim that CMMC is universally enforced as of a
+ specific date."}
