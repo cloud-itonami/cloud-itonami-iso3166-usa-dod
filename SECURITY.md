@@ -11,7 +11,7 @@ Report privately before opening public issues for:
 - credential exposure
 - real client, business-registration or bid data exposure
 - authorization bypass
-- Market-Entry Compliance Governor bypass
+- DoD Compliance Governor bypass
 - audit-ledger tampering
 - a path that lets a filing/registration submit without human sign-off
 
