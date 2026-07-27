@@ -47,6 +47,25 @@
 (defn- track-code [track]
   (str/upper-case (name track)))
 
+(def ^:private money-scale
+  "Sub-minor-unit scale used when comparing two money amounts: 1/10000 of
+  a unit. Coarser than double representation error by many orders of
+  magnitude, finer than any real currency's minor unit."
+  10000)
+
+(defn- money=
+  "Exact-at-money-precision equality for two amounts.
+
+  `==` on raw doubles is NOT the right comparison for money. With
+  whole-unit fees the two agree, but as soon as an amount carries cents
+  the sum is routinely not the double nearest the true total and a
+  CORRECT claim compares false -- measured on this shape, 12.5% of
+  cent-denominated combinations against 0% in whole units."
+  [x y]
+  (and (number? x) (number? y)
+       (= (Math/round (* money-scale (double x)))
+          (Math/round (* money-scale (double y))))))
+
 (defn compute-engagement-fee
   "The ground-truth engagement fee for `engagement`'s own `:base-fee`
   (per-engagement compliance-review fee), `:monitoring-months` x
@@ -55,15 +74,19 @@
   (compliance-audit export package). A single flat base + months x rate +
   optional export calculation, not a full pricing engine."
   [{:keys [base-fee monthly-rate monitoring-months audit-export? export-fee]}]
-  (+ (double base-fee)
-     (* (double monthly-rate) (double monitoring-months))
-     (if audit-export? (double (or export-fee 0)) 0.0)))
+  ;; nil when a required field is not a number: an un-recomputable
+  ;; engagement is un-verifiable, which is neither `correct` nor a
+  ;; ClassCastException thrown out of the caller.
+  (when (and (number? base-fee) (number? monthly-rate) (number? monitoring-months))
+    (+ (double base-fee)
+       (* (double monthly-rate) (double monitoring-months))
+       (if audit-export? (double (or export-fee 0)) 0.0))))
 
 (defn engagement-fee-matches-claim?
   "Does `engagement`'s own `:claimed-fee` equal the independently
   recomputed `compute-engagement-fee`?"
   [{:keys [claimed-fee] :as engagement}]
-  (== (double claimed-fee) (compute-engagement-fee engagement)))
+  (money= claimed-fee (compute-engagement-fee engagement)))
 
 (defn register-draft
   "Validate + construct the FILING-DRAFT registration DRAFT for `track`
