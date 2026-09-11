@@ -4,7 +4,7 @@
    first.
 2. Intake: which DoD program/contract applies, and which of the three
    filing tracks (`:dfars`, `:cmmc`, `:facility-clearance`) it needs.
-3. Advisor reads only against `src/dodcompliance/facts.cljc` (DFARS via
+3. Advisor reads only against `src/dodcompliance/facts.cljk` (DFARS via
    acquisition.gov/dfars; CMMC and DCSA/NISP facility clearance via the
    Wikipedia sources cited in that file, since primary DoD sources
    403'd during this repo's research pass).

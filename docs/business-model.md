@@ -66,7 +66,7 @@ phase's `:auto` set).
 - every requirement cites the official source (acquisition.gov for
   DFARS; the CMMC/DCSA entries cite Wikipedia because primary DoD
   sources 403'd during this repo's research pass, disclosed honestly in
-  `src/dodcompliance/facts.cljc`), never invented — and no specific DFARS
+  `src/dodcompliance/facts.cljk`), never invented — and no specific DFARS
   clause number is cited unless independently verified live
 
 ## Boundary with adjacent actors (read before forking)
