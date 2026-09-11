@@ -1,5 +1,5 @@
 (ns dodcompliance.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean engagement through
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean engagement through
   intake -> dfars track assessment -> filing draft (escalate/approve/
   commit) -> filing submit (escalate/approve/commit), same for the cmmc
   and facility-clearance tracks, then shows HARD-hold scenarios grounded
