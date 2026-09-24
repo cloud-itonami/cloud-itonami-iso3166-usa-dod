@@ -8,7 +8,7 @@
     NEVER auto-commit at any phase, `:engagement/intake` MAY auto-commit
     when clean, and every decision (commit OR hold) leaves exactly one
     ledger fact."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [langgraph.graph :as g]
             [dodcompliance.store :as store]
             [dodcompliance.operation :as op]))

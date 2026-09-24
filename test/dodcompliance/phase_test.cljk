@@ -1,5 +1,5 @@
 (ns dodcompliance.phase-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [dodcompliance.phase :as phase]))
 
 (deftest filing-submit-never-auto

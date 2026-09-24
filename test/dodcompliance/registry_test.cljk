@@ -1,5 +1,5 @@
 (ns dodcompliance.registry-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [dodcompliance.registry :as registry]))
 
 (deftest engagement-fee-recompute-no-export

@@ -1,6 +1,6 @@
 (ns dodcompliance.store-contract-test
   "MemStore ≡ DatomicStore parity for the Store protocol."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [dodcompliance.store :as store]
             [dodcompliance.registry :as registry]))
 
