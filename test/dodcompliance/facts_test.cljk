@@ -1,5 +1,5 @@
 (ns dodcompliance.facts-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [dodcompliance.facts :as facts]))
 
 (deftest dfars-has-spec-basis
